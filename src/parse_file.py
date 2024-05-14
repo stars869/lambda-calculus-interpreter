@@ -4,7 +4,7 @@ lexeme = lambda p: p << regex(r' *')
 
 symbol = lexeme(regex(r'[_a-zA-Z][_a-zA-Z0-9]*'))
 assign = lexeme(string('='))
-expr_body = regex(r'.*') << regex(r'\n')
+expr_body = regex(r'[^\n]*')
 
 empty_line = regex(r'\s*\n')
 comment_line = regex(r'--.*\n')
@@ -14,6 +14,7 @@ def line():
     s = yield symbol 
     yield assign
     e = yield expr_body
+    yield regex(r'\n')
     return (s, e)
 
 @generate 

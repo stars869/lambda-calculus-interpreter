@@ -5,13 +5,15 @@ from normalize import normalize
 
 if __name__ == "__main__":
     file = open("./test/test.lambda", "r")
-    bindings = file_parser.parse(file.read())
+    bindings = list(map(
+        lambda p: (p[0], expr_parser.parse(p[1])), 
+        file_parser.parse(file.read())
+    ))
     env = {}
     
-    for (name, expr_str) in bindings:
+    for (name, expr) in bindings:
         assert(name not in env)
 
-        expr = expr_parser.parse(expr_str)
         norm_expr = normalize(expr, env)
 
         print(f"{name} = {serialize_expr(expr)}")

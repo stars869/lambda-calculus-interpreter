@@ -2,7 +2,7 @@ import unittest
 
 import sys 
 sys.path.append("../src")
-from core_expr import Lam, App, Var, Expr
+from expr import Lam, App, Var, Expr
 from my_reducer import alpha_convert, do_apply
 
 

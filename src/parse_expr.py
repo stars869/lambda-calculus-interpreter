@@ -1,5 +1,5 @@
 from parsec import (spaces, string, regex, generate, many, many1)
-from core_expr import (Expr, Var, Lam, App)
+from expr import (Expr, Var, Lam, App)
 from functools import (reduce)
 
 lexeme = lambda p: p << spaces()

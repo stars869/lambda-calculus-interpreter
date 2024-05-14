@@ -1,4 +1,4 @@
-from core_expr import Expr, App, Lam, Var
+from expr import Expr, App, Lam, Var
 
 def serialize_expr(expr: Expr) -> str:
     if isinstance(expr, Var):
